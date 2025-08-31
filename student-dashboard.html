@@ -35,15 +35,6 @@
             padding: 20px;
         }
         
-        .banner {
-            width: 100%;
-            height: 100px;
-            background: url('assets/banner.png') center/contain no-repeat;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
         header {
             text-align: center;
             padding: 30px;
@@ -51,6 +42,17 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             margin-bottom: 30px;
+            animation: slideInDown 1s ease-out;
+        }
+        
+        @keyframes slideInDown {
+            from {
+                transform: translate3d(0, -100%, 0);
+                visibility: visible;
+            }
+            to {
+                transform: translate3d(0, 0, 0);
+            }
         }
         
         h1 {
@@ -64,10 +66,12 @@
             color: var(--secondary);
             text-decoration: none;
             font-weight: 500;
+            transition: all 0.3s;
         }
         
         .back-link:hover {
             text-decoration: underline;
+            transform: translateX(-5px);
         }
         
         .section-title {
@@ -75,6 +79,34 @@
             text-align: center;
             margin: 40px 0 20px;
             font-size: 2em;
+            animation: bounceIn 1s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            from, 20%, 40%, 60%, 80%, to {
+                animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(0.97, 0.97, 0.97);
+            }
+            to {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
         }
         
         .grid {
@@ -89,12 +121,46 @@
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
         }
         
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .card:hover::before {
+            left: 100%;
         }
         
         .card h3 {
@@ -120,13 +186,31 @@
             color: white;
             text-decoration: none;
             border-radius: 8px;
-            transition: background 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .link-btn:hover::before {
+            left: 100%;
         }
         
         .link-btn:hover {
             background: #2980b9;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .link-btn.github {
@@ -150,15 +234,12 @@
             color: white;
             padding: 30px;
             margin-top: 30px;
+            animation: fadeIn 3s ease-in;
         }
         
         @media (max-width: 768px) {
             .grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .banner {
-                height: 80px;
             }
             
             header {
@@ -169,8 +250,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="banner"></div>
-        
         <header>
             <h1>🎓 Espace Étudiants</h1>
             <p>Accédez aux laboratoires virtuels et aux ressources pédagogiques</p>
@@ -184,7 +263,7 @@
             <div class="card">
                 <h3><i class="fas fa-circle-notch"></i> Centrifugation</h3>
                 <div class="card-links">
-                    <a href="notebooks/centrifugation_simulation.ipynb" target="_blank" class="link-btn github">
+                    <a href="https://github.com/kader68Biology/biol-virtual-labs/blob/main/notebooks/centrifugation_simulation.ipynb" target="_blank" class="link-btn github">
                         <i class="fab fa-github"></i> Voir le Code
                     </a>
                     <a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD?labpath=notebooks%2Fcentrifugation_simulation.ipynb" target="_blank" class="link-btn binder">
@@ -199,50 +278,4 @@
             <div class="card">
                 <h3><i class="fas fa-chart-line"></i> Spectrophotométrie</h3>
                 <div class="card-links">
-                    <a href="notebooks/uv_visible_simulation.ipynb" target="_blank" class="link-btn github">
-                        <i class="fab fa-github"></i> Voir le Code
-                    </a>
-                    <a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD?labpath=notebooks%2Fuv_visible_simulation.ipynb" target="_blank" class="link-btn binder">
-                        <i class="fas fa-play"></i> Exécuter dans Binder
-                    </a>
-                    <a href="pdf/CoursMaster_Spectro.pdf" target="_blank" class="link-btn">
-                        <i class="fas fa-file-pdf"></i> Cours PDF
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3><i class="fas fa-bolt"></i> Électrophorèse</h3>
-                <div class="card-links">
-                    <a href="notebooks/electrophoresis_simulation.ipynb" target="_blank" class="link-btn github">
-                        <i class="fab fa-github"></i> Voir le Code
-                    </a>
-                    <a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD?labpath=notebooks%2Felectrophoresis_simulation.ipynb" target="_blank" class="link-btn binder">
-                        <i class="fas fa-play"></i> Exécuter dans Binder
-                    </a>
-                    <a href="pdf/CoursMaster_électrophorèse.pdf" target="_blank" class="link-btn">
-                        <i class="fas fa-file-pdf"></i> Cours PDF
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Travaux Dirigés</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-book"></i> TD Techniques de Laboratoire</h3>
-                <div class="card-links">
-                    <a href="pdf/TD_Tech_labo Student.pdf" target="_blank" class="link-btn">
-                        <i class="fas fa-user-graduate"></i> Énoncé Étudiants
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2025 Laboratoire de Biotechnologies des Rhizobium et Amélioration des Plantes</p>
-            <p>Université d'Oran 1 Ahmed Ben Bella, Algérie</p>
-        </footer>
-    </div>
-</body>
-</html>
+                    <
