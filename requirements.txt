@@ -1,0 +1,12 @@
+
+---
+
+### 📦 2. `requirements.txt`
+
+**Chemin** : `biol-virtual-labs/requirements.txt`  
+**Contenu** :
+```txt
+jupyter
+numpy
+matplotlib
+pandas
