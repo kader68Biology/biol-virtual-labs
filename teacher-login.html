@@ -28,15 +28,6 @@
             margin: 0 auto;
         }
         
-        .banner {
-            width: 100%;
-            height: 100px;
-            background: url('assets/banner.png') center/contain no-repeat;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
         .login-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
@@ -45,12 +36,31 @@
             margin: 30px auto;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
         }
         
         .logo {
             font-size: 3em;
             color: var(--teacher);
             margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
         
         h2 {
@@ -76,6 +86,7 @@
         input:focus {
             border-color: var(--teacher);
             outline: none;
+            box-shadow: 0 0 10px rgba(155, 89, 182, 0.3);
         }
         
         button {
@@ -87,13 +98,31 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
             width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        button:hover::before {
+            left: 100%;
         }
         
         button:hover {
             background: #8e44ad;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
         .back-link {
@@ -101,10 +130,21 @@
             margin-top: 20px;
             color: var(--teacher);
             text-decoration: none;
+            transition: all 0.3s;
         }
         
         .back-link:hover {
             text-decoration: underline;
+            transform: translateX(-5px);
+        }
+        
+        .error-message {
+            color: var(--accent);
+            background: #ffeaea;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: none;
         }
         
         @media (max-width: 768px) {
@@ -112,17 +152,11 @@
                 margin: 20px 10px;
                 padding: 30px 20px;
             }
-            
-            .banner {
-                height: 80px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="banner"></div>
-        
         <div class="login-card">
             <div class="logo">
                 <i class="fas fa-chalkboard-teacher"></i>
@@ -130,7 +164,11 @@
             <h2>👨‍🏫 Espace Enseignants</h2>
             <p>Entrez le mot de passe pour accéder aux ressources pédagogiques</p>
             
-            <input type="password" id="password" placeholder="Mot de passe enseignant">
+            <div class="error-message" id="errorMessage">
+                ❌ Mot de passe enseignant incorrect !
+            </div>
+            
+            <input type="password" id="password" placeholder="Mot de passe enseignant" autofocus>
             <button onclick="checkPassword()">Accéder aux Ressources</button>
             
             <a href="index.html" class="back-link">
@@ -142,12 +180,25 @@
     <script>
         function checkPassword() {
             const pwd = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
             if (pwd === 'Solukey2025') {
-                window.location.href = 'teacher-dashboard.html';
+                // Animation de succès
+                document.querySelector('button').style.background = '#27ae60';
+                document.querySelector('button').innerHTML = '<i class="fas fa-check"></i> Connexion réussie !';
+                setTimeout(() => {
+                    window.location.href = 'teacher-dashboard.html';
+                }, 1000);
             } else {
-                alert('❌ Mot de passe enseignant incorrect !');
+                // Animation d'erreur
+                errorMessage.style.display = 'block';
                 document.getElementById('password').value = '';
                 document.getElementById('password').focus();
+                document.getElementById('password').style.borderColor = '#e74c3c';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                    document.getElementById('password').style.borderColor = '#ddd';
+                }, 3000);
             }
         }
         
