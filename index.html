@@ -44,7 +44,7 @@
         
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-5px); }
             100% { transform: translateY(0px); }
         }
         
@@ -179,6 +179,7 @@
             margin: 40px 0 20px;
             font-size: 2em;
             animation: bounceIn 1s ease-out;
+            position: relative;
         }
         
         @keyframes bounceIn {
@@ -206,6 +207,38 @@
                 opacity: 1;
                 transform: scale3d(1, 1, 1);
             }
+        }
+        
+        /* Miniatures décoratives près des titres */
+        .title-decoration {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .decoration-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--secondary);
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .decoration-badge:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .decoration-badge:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        .decoration-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .grid {
@@ -328,38 +361,6 @@
             background: #219653;
         }
         
-        .animation-badges {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .animation-badge {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--secondary);
-            animation: float 3s ease-in-out infinite;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .animation-badge:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        
-        .animation-badge:nth-child(3) {
-            animation-delay: 1s;
-        }
-        
-        .animation-badge img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
         .access-section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
@@ -449,13 +450,13 @@
                 animation: none;
             }
             
-            .animation-badges {
+            .title-decoration {
                 gap: 10px;
             }
             
-            .animation-badge {
-                width: 60px;
-                height: 60px;
+            .decoration-badge {
+                width: 30px;
+                height: 30px;
             }
         }
     </style>
@@ -495,29 +496,33 @@
             </div>
         </header>
 
-        <!-- Badges d'animations décoratives -->
-        <div class="animation-badges">
-            <div class="animation-badge">
-                <img src="assets/Animation/DNA (1).jpg" alt="ADN Animation">
-            </div>
-            <div class="animation-badge">
-                <img src="assets/Animation/DNA (2).jpg" alt="ADN Animation">
-            </div>
-            <div class="animation-badge">
-                <img src="assets/Animation/DNA (3).jpg" alt="ADN Animation">
-            </div>
-        </div>
-
         <!-- Badges Binder -->
         <div class="badges-section">
-            <h2 class="section-title"><i class="fas fa-rocket"></i> Exécution Interactive</h2>
+            <h2 class="section-title">
+                <i class="fas fa-rocket"></i> Exécution Interactive
+                <div class="title-decoration">
+                    <div class="decoration-badge">
+                        <img src="assets/Animation/DNA (1).jpg" alt="ADN">
+                    </div>
+                    <div class="decoration-badge">
+                        <img src="assets/Animation/DNA (2).jpg" alt="ADN">
+                    </div>
+                </div>
+            </h2>
             <a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD" target="_blank" class="badge">
                 <img src="https://mybinder.org/badge_logo.svg" alt="Binder">
             </a>
         </div>
 
         <!-- Laboratoires -->
-        <h2 class="section-title"><i class="fas fa-flask"></i> Laboratoires Virtuels</h2>
+        <h2 class="section-title">
+            <i class="fas fa-flask"></i> Laboratoires Virtuels
+            <div class="title-decoration">
+                <div class="decoration-badge">
+                    <img src="assets/Animation/DNA (3).jpg" alt="ADN">
+                </div>
+            </div>
+        </h2>
         <div class="grid">
             <div class="card">
                 <h3><i class="fas fa-circle-notch"></i> Centrifugation</h3>
@@ -566,7 +571,17 @@
         </div>
 
         <!-- Travaux Dirigés -->
-        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Travaux Dirigés</h2>
+        <h2 class="section-title">
+            <i class="fas fa-graduation-cap"></i> Travaux Dirigés
+            <div class="title-decoration">
+                <div class="decoration-badge">
+                    <img src="assets/Animation/DNA (1).jpg" alt="ADN">
+                </div>
+                <div class="decoration-badge">
+                    <img src="assets/Animation/DNA (3).jpg" alt="ADN">
+                </div>
+            </div>
+        </h2>
         <div class="grid">
             <div class="card">
                 <h3><i class="fas fa-book"></i> TD Techniques de Laboratoire</h3>
