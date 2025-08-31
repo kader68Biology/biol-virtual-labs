@@ -3,65 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratoires Virtuels de Biologie</title>
+    <title>🔬 Laboratoires Virtuels de Biologie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; border-bottom: 2px solid #4CAF50; padding-bottom: 20px; }
-        .notebook { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }
-        a { color: #4CAF50; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid var(--secondary);
+            margin: 0 auto 20px;
+            object-fit: cover;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            color: var(--dark);
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        
+        .contact-item:hover {
+            color: var(--secondary);
+        }
+        
+        .badges-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+        }
+        
+        .badge img {
+            height: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .badge:hover img {
+            transform: scale(1.1);
+        }
+        
+        .section-title {
+            color: white;
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 2em;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+        
+        .link-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .link-btn.github {
+            background: #2c3e50;
+        }
+        
+        .link-btn.github:hover {
+            background: #1a252f;
+        }
+        
+        .link-btn.binder {
+            background: #4CAF50;
+        }
+        
+        .link-btn.binder:hover {
+            background: #45a049;
+        }
+        
+        .access-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 40px 0;
+        }
+        
+        .access-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .access-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .access-btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🔬 Laboratoires Virtuels de Biologie</h1>
-        <p><strong>Abdelkader Allouche</strong><br>
-        Laboratoire de Biotechnologies des Rhizobium et Amélioration des Plantes<br>
-        Université d'Oran 1 Ahmed Ben Bella, Oran, Algérie</p>
-        <p>
-            Email: <a href="mailto:kader.allouche@gmail.com">kader.allouche@gmail.com</a><br>
-            GitHub: <a href="https://github.com/kader68Biology" target="_blank">kader68Biology</a>
-            <img src="assets/profile.jpg" alt="Abdelkader Allouche" style="width: 80px; height: 80px; border-radius: 50%; margin-left: 10px; vertical-align: middle;">
-        </p>
-    </header>
-<h2>🔐 Accès Restreints</h2>
-<ul>
-    <li><a href="login.html">accès Étudiants</a> (mot de passe: Masterlab2025)</li>
-    <li><a href="teacher-login.html">accès Enseignants</a> (mot de passe: Solukey2025)</li>
-</ul>
-   <h2>📚 Contenu des Laboratoires Virtuels</h2>
+    <div class="container">
+        <header>
+            <img src="https://raw.githubusercontent.com/kader68Biology/biol-virtual-labs/main/photo_2025-07-29_08-59-07.jpg" 
+                 alt="Abdelkader Allouche" 
+                 class="profile-img"
+                 onerror="this.style.display='none'">
+            
+            <h1>🔬 Laboratoires Virtuels de Biologie</h1>
+            <p class="subtitle">Techniques de Centrifugation, Spectrophotométrie & Électrophorèse</p>
+            
+            <div class="contact-info">
+                <a href="mailto:kader.allouche@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    kader.allouche@gmail.com
+                </a>
+                <a href="https://github.com/kader68Biology" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    kader68Biology
+                </a>
+            </div>
+            
+            <div class="badges-section">
+                <a href="https://github.com/kader68Biology/biol-virtual-labs" target="_blank" class="badge">
+                    <img src="https://img.shields.io/github/stars/kader68Biology/biol-virtual-labs?style=social" alt="GitHub Stars">
+                </a>
+                <a href="https://github.com/kader68Biology/biol-virtual-labs/issues" target="_blank" class="badge">
+                    <img src="https://img.shields.io/github/issues/kader68Biology/biol-virtual-labs?style=flat-square&color=red" alt="Issues">
+                </a>
+                <a href="https://github.com/kader68Biology/biol-virtual-labs/commits" target="_blank" class="badge">
+                    <img src="https://img.shields.io/github/last-commit/kader68Biology/biol-virtual-labs?style=flat-square&color=blue" alt="Last Commit">
+                </a>
+            </div>
+        </header>
 
-<div class="notebook">
-    <h3>🌀 Centrifugation</h3>
-    <p><a href="notebooks/centrifugation_simulation.ipynb" target="_blank">Notebook Jupyter</a> | 
-       <a href="pdf/CoursMaster_Centrifugation.pdf" target="_blank">Cours PDF</a></p>
-</div>
+        <!-- Badges Binder -->
+        <div class="badges-section">
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Exécution Interactive</h2>
+            <a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD" target="_blank" class="badge">
+                <img src="https://mybinder.org/badge_logo.svg" alt="Binder">
+            </a>
+        </div>
 
-<div class="notebook">
-    <h3>📊 UV-Visible / Spectrophotométrie</h3>
-    <p><a href="notebooks/uv_visible_simulation.ipynb" target="_blank">Notebook Jupyter</a> | 
-       <a href="pdf/CoursMaster_Spectro.pdf" target="_blank">Cours PDF</a></p>
-</div>
+        <!-- Laboratoires -->
+        <h2 class="section-title"><i class="fas fa-flask"></i> Laboratoires Virtuels</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-circle-notch"></i> Centrifugation</h3>
+                <div class="card-links">
+                    <a href="notebooks/centrifugation_simulation.ipynb" target="_blank" class="link-btn github">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                    <a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD?labpath=notebooks%2Fcentrifugation_simulation.ipynb" target="_blank" class="link-btn binder">
+                        <i class="fas fa-play"></i> Exécuter avec Binder
+                    </a>
+                    <a href="pdf/CoursMaster_Centrifugation.pdf" target="_blank" class="link-btn">
+                        <i class="fas fa-file-pdf"></i> Cours PDF
+                    </a>
+                </div>
+            </div>
 
-<div class="notebook">
-    <h3>⚡ Électrophorèse</h3>
-    <p><a href="notebooks/electrophoresis_simulation.ipynb" target="_blank">Notebook Jupyter</a> | 
-       <a href="pdf/CoursMaster_électrophorèse.pdf" target="_blank">Cours PDF</a></p>
-</div>
+            <div class="card">
+                <h3><i class="fas fa-chart-line"></i> Spectrophotométrie</h3>
+                <div class="card-links">
+                    <a href="notebooks/uv_visible_simulation.ipynb" target="_blank" class="link-btn github">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                    <a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD?labpath=notebooks%2Fuv_visible_simulation.ipynb" target="_blank" class="link-btn binder">
+                        <i class="fas fa-play"></i> Exécuter avec Binder
+                    </a>
+                    <a href="pdf/CoursMaster_Spectro.pdf" target="_blank" class="link-btn">
+                        <i class="fas fa-file-pdf"></i> Cours PDF
+                    </a>
+                </div>
+            </div>
 
-<div class="notebook">
-    <h3>📝 Travaux Dirigés</h3>
-    <p><a href="pdf/TD_Tech_labo Student.pdf" target="_blank">Énoncé Étudiants (PDF)</a> | 
-       <a href="pdf/TD_Tech_labo prof.pdf" target="_blank">Corrigé Enseignants (PDF)</a></p>
-</div>
-    <h2>💻 Comment utiliser</h2>
-    <ol>
-        <li><strong>Localement :</strong> Clonez le dépôt et exécutez avec Jupyter</li>
-        <li><strong>En ligne :</strong> Utilisez le bouton Binder ci-dessous</li>
-    </ol>
-    
-    <p><a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD" target="_blank">
-        <img src="https://mybinder.org/badge_logo.svg" alt="Binder">
-    </a></p>
-</body>
-</html>
+            <div class="card">
+                <h3><i class="fas fa-bolt"></i> Électrophorèse</h3>
+                <div class="card-links">
+                    <a href="notebooks/electrophoresis_simulation.ipynb" target="_blank" class="link-btn github">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                    <a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD?labpath=notebooks%2Felectrophoresis_simulation.ipynb" target="_blank" class="link-btn binder">
+                        <i class="fas fa-play"></i> Exécuter avec Binder
+                    </a>
+                    <a href="pdf/CoursMaster_électrophorèse.pdf" target="_blank" class="link-btn">
+                        <i class="fas fa-file-pdf"></i> Cours PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Travaux Dirigés -->
+        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Travaux Dirigés</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-book"></i> TD Techniques de Laboratoi
