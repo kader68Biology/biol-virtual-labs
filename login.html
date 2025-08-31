@@ -1,18 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Accès Étudiants</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 Accès Étudiants - Laboratoires Virtuels</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: Arial; text-align: center; padding: 50px; }
-        input, button { padding: 10px; margin: 10px; }
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .banner {
+            width: 100%;
+            height: 100px;
+            background: url('assets/banner.png') center/contain no-repeat;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 400px;
+            margin: 30px auto;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            font-size: 3em;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+        
+        button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .login-card {
+                margin: 20px 10px;
+                padding: 30px 20px;
+            }
+            
+            .banner {
+                height: 80px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h2>🔐 Accès aux Laboratoires Virtuels</h2>
-    <p>Entrez le mot de passe pour accéder aux notebooks et PDF :</p>
-    <input type="password" id="password" placeholder="Mot de passe">
-    <br>
-    <button onclick="checkPassword()">Accéder</button>
+    <div class="container">
+        <div class="banner"></div>
+        
+        <div class="login-card">
+            <div class="logo">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h2>🔐 Accès Étudiants</h2>
+            <p>Entrez le mot de passe pour accéder aux laboratoires virtuels</p>
+            
+            <input type="password" id="password" placeholder="Mot de passe">
+            <button onclick="checkPassword()">Accéder aux Laboratoires</button>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Retour à l'accueil
+            </a>
+        </div>
+    </div>
 
     <script>
         function checkPassword() {
@@ -20,9 +144,18 @@
             if (pwd === 'Masterlab2025') {
                 window.location.href = 'student-dashboard.html';
             } else {
-                alert('Mot de passe incorrect !');
+                alert('❌ Mot de passe incorrect !');
+                document.getElementById('password').value = '';
+                document.getElementById('password').focus();
             }
         }
+        
+        // Permettre la validation avec Enter
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
     </script>
 </body>
 </html>
