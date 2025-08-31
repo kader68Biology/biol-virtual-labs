@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accès Étudiants</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        input, button { padding: 10px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h2>🔐 Accès aux Laboratoires Virtuels</h2>
+    <p>Entrez le mot de passe pour accéder aux notebooks et PDF :</p>
+    <input type="password" id="password" placeholder="Mot de passe">
+    <br>
+    <button onclick="checkPassword()">Accéder</button>
+
+    <script>
+        function checkPassword() {
+            const pwd = document.getElementById('password').value;
+            if (pwd === 'Masterlab2025') {
+                window.location.href = 'student-dashboard.html';
+            } else {
+                alert('Mot de passe incorrect !');
+            }
+        }
+    </script>
+</body>
+</html>
