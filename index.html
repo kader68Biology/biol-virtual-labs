@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔬 Virtual Laboratry of Biology</title>
+    <title>🔬 Laboratoires Virtuels de Biologie</title>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -328,16 +328,36 @@
             background: #219653;
         }
         
-        .video-preview {
-            width: 100%;
-            border-radius: 8px;
-            margin: 10px 0;
-            cursor: pointer;
-            transition: transform 0.3s;
+        .animation-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
         }
         
-        .video-preview:hover {
-            transform: scale(1.02);
+        .animation-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary);
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .animation-badge:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .animation-badge:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        .animation-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .access-section {
@@ -411,48 +431,6 @@
             animation: fadeIn 3s ease-in;
         }
         
-        /* Modal pour les vidéos */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-        }
-        
-        .modal-content {
-            position: relative;
-            margin: auto;
-            padding: 0;
-            width: 90%;
-            max-width: 800px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .close {
-            color: #fff;
-            position: absolute;
-            top: -40px;
-            right: 0;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .close:hover {
-            color: #ccc;
-        }
-        
-        .modal-video {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        
         @media (max-width: 768px) {
             .grid {
                 grid-template-columns: 1fr;
@@ -469,6 +447,15 @@
             
             .access-section {
                 animation: none;
+            }
+            
+            .animation-badges {
+                gap: 10px;
+            }
+            
+            .animation-badge {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
@@ -507,6 +494,19 @@
                 </a>
             </div>
         </header>
+
+        <!-- Badges d'animations décoratives -->
+        <div class="animation-badges">
+            <div class="animation-badge">
+                <img src="assets/Animation/DNA (1).jpg" alt="ADN Animation">
+            </div>
+            <div class="animation-badge">
+                <img src="assets/Animation/DNA (2).jpg" alt="ADN Animation">
+            </div>
+            <div class="animation-badge">
+                <img src="assets/Animation/DNA (3).jpg" alt="ADN Animation">
+            </div>
+        </div>
 
         <!-- Badges Binder -->
         <div class="badges-section">
@@ -565,40 +565,6 @@
             </div>
         </div>
 
-        <!-- Animations ADN -->
-        <h2 class="section-title"><i class="fas fa-dna"></i> Animations Scientifiques</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-video"></i> Animation ADN 1</h3>
-                <img src="assets/Animation/DNA (1).jpg" alt="Aperçu ADN 1" class="video-preview" onclick="openModal('assets/Animation/DNA (1).mp4')" style="width: 100%; border-radius: 8px; margin: 10px 0;">
-                <div class="card-links">
-                    <a href="assets/Animation/DNA (1).mp4" target="_blank" class="link-btn">
-                        <i class="fas fa-download"></i> Télécharger la vidéo
-                    </a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3><i class="fas fa-video"></i> Animation ADN 2</h3>
-                <img src="assets/Animation/DNA (2).jpg" alt="Aperçu ADN 2" class="video-preview" onclick="openModal('assets/Animation/DNA (2).mp4')" style="width: 100%; border-radius: 8px; margin: 10px 0;">
-                <div class="card-links">
-                    <a href="assets/Animation/DNA (2).mp4" target="_blank" class="link-btn">
-                        <i class="fas fa-download"></i> Télécharger la vidéo
-                    </a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3><i class="fas fa-video"></i> Animation ADN 3</h3>
-                <img src="assets/Animation/DNA (3).jpg" alt="Aperçu ADN 3" class="video-preview" onclick="openModal('assets/Animation/DNA (3).mp4')" style="width: 100%; border-radius: 8px; margin: 10px 0;">
-                <div class="card-links">
-                    <a href="assets/Animation/DNA (3).mp4" target="_blank" class="link-btn">
-                        <i class="fas fa-download"></i> Télécharger la vidéo
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <!-- Travaux Dirigés -->
         <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Travaux Dirigés</h2>
         <div class="grid">
@@ -629,49 +595,10 @@
             </div>
         </div>
 
-        <!-- Modal pour les vidéos -->
-        <div id="videoModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <video id="modalVideo" class="modal-video" controls>
-                    Votre navigateur ne supporte pas la lecture vidéo.
-                </video>
-            </div>
-        </div>
-
         <footer>
             <p>© 2025 Laboratoire de Biotechnologies des Rhizobium et Amélioration des Plantes</p>
             <p>Université d'Oran 1 Ahmed Ben Bella, Algérie</p>
         </footer>
     </div>
-
-    <script>
-        // Fonction pour ouvrir le modal vidéo
-        function openModal(videoSrc) {
-            document.getElementById('modalVideo').src = videoSrc;
-            document.getElementById('videoModal').style.display = 'block';
-        }
-        
-        // Fonction pour fermer le modal
-        function closeModal() {
-            document.getElementById('videoModal').style.display = 'none';
-            document.getElementById('modalVideo').src = '';
-        }
-        
-        // Fermer le modal en cliquant en dehors
-        window.onclick = function(event) {
-            const modal = document.getElementById('videoModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-        
-        // Fermer avec la touche Echap
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-    </script>
 </body>
 </html>
