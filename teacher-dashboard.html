@@ -9,20 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {--primary:#2c3e50;--secondary:#3498db;--teacher:#9b59b6;}
-        body {font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#333;}
+        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#333;}
         .container{max-width:1200px;margin:0 auto;padding:20px;}
         .banner{width:100%;height:100px;background:url('assets/banner.png') center/contain no-repeat;margin-bottom:20px;}
         header{text-align:center;padding:30px;background:#fff;border-radius:15px;margin-bottom:30px;}
-        h1{color:var(--teacher);}
-        .back-link{color:var(--teacher);text-decoration:none;}
+        h1{color:var(--teacher);} .back-link{color:var(--teacher);text-decoration:none;}
         .section-title{color:white;text-align:center;margin:40px 0 20px;font-size:2em;}
         .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;}
-        .card{background:#fff;border-radius:15px;padding:25px;box-shadow:0 8px 25px rgba(0,0,0,0.15);} 
-        .card h3{color:var(--primary);margin-bottom:15px;}
+        .card{background:#fff;border-radius:15px;padding:25px;box-shadow:0 8px 25px rgba(0,0,0,0.15);} .card h3{color:var(--primary);margin-bottom:15px;}
         .card-links{display:flex;flex-direction:column;gap:12px;}
         .link-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--secondary);color:white;border-radius:8px;text-decoration:none;}
-        .link-btn.teacher{background:var(--teacher);}
-        .warning{background:#fff3cd;border:1px solid #ffeaa7;padding:15px;margin:20px 0;color:#856404;border-radius:8px;}
+        .link-btn.teacher{background:var(--teacher);} .warning{background:#fff3cd;border:1px solid #ffeaa7;padding:15px;margin:20px 0;color:#856404;border-radius:8px;}
     </style>
 </head>
 <body>
@@ -33,71 +30,29 @@
     <p>Ressources pédagogiques et corrigés des exercices</p>
     <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
   </header>
-
   <div class="warning"><i class="fas fa-exclamation-triangle"></i> <strong>Confidentiel :</strong> Ces ressources sont réservées aux enseignants autorisés.</div>
-
   <h2 class="section-title"><i class="fas fa-chalkboard-teacher"></i> Ressources Pédagogiques</h2>
   <div class="grid">
-    <div class="card">
-      <h3><i class="fas fa-circle-notch"></i> Centrifugation</h3>
-      <div class="card-links">
-        <a href="http://localhost:8888/lab/tree/notebooks/teacher_solutions.ipynb" target="_blank" class="link-btn teacher"><i class="fas fa-play"></i> Ouvrir en local</a>
-        <a href="notebooks/teacher_solutions.ipynb" class="link-btn" download><i class="fas fa-download"></i> Télécharger Notebook</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-chart-line"></i> Spectrophotométrie</h3>
-      <div class="card-links">
-        <a href="http://localhost:8888/lab/tree/notebooks/teacher_solutions.ipynb" target="_blank" class="link-btn teacher"><i class="fas fa-play"></i> Ouvrir en local</a>
-        <a href="notebooks/teacher_solutions.ipynb" class="link-btn" download><i class="fas fa-download"></i> Télécharger Notebook</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-bolt"></i> Électrophorèse</h3>
-      <div class="card-links">
-        <a href="http://localhost:8888/lab/tree/notebooks/teacher_solutions.ipynb" target="_blank" class="link-btn teacher"><i class="fas fa-play"></i> Ouvrir en local</a>
-        <a href="notebooks/teacher_solutions.ipynb" class="link-btn" download><i class="fas fa-download"></i> Télécharger Notebook</a>
-      </div>
-    </div>
+    <div class="card"><h3><i class="fas fa-circle-notch"></i> Centrifugation</h3><div class="card-links">
+      <a href="http://localhost:8888/lab/tree/teacher_solutions.ipynb" target="_blank" class="link-btn teacher"><i class="fas fa-play"></i> Ouvrir en local</a>
+      <a href="notebooks/teacher_solutions.ipynb" class="link-btn" target="_blank"><i class="fas fa-download"></i> Télécharger Notebook</a>
+    </div></div>
+    <div class="card"><h3><i class="fas fa-chart-line"></i> Spectrophotométrie</h3><div class="card-links">
+      <a href="http://localhost:8888/lab/tree/teacher_solutions.ipynb" target="_blank" class="link-btn teacher"><i class="fas fa-play"></i> Ouvrir en local</a>
+      <a href="notebooks/teacher_solutions.ipynb" class="link-btn" target="_blank"><i class="fas fa-download"></i> Télécharger Notebook</a>
+    </div></div>
+    <div class="card"><h3><i class="fas fa-bolt"></i> Électrophorèse</h3><div class="card-links">
+      <a href="http://localhost:8888/lab/tree/teacher_solutions.ipynb" target="_blank" class="link-btn teacher"><i class="fas fa-play"></i> Ouvrir en local</a>
+      <a href="notebooks/teacher_solutions.ipynb" class="link-btn" target="_blank"><i class="fas fa-download"></i> Télécharger Notebook</a>
+    </div></div>
   </div>
-
   <h2 class="section-title"><i class="fas fa-book-open"></i> 📘 Documents PDF</h2>
   <div class="grid">
-    <div class="card">
-      <h3><i class="fas fa-file-pdf"></i> Cours Centrifugation</h3>
-      <div class="card-links">
-        <a href="pdf/CoursMaster_Centrifugation.pdf" target="_blank" class="link-btn"><i class="fas fa-file-pdf"></i> Voir PDF</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-file-pdf"></i> Cours Spectroscopie</h3>
-      <div class="card-links">
-        <a href="pdf/CoursMaster_Spectro.pdf" target="_blank" class="link-btn"><i class="fas fa-file-pdf"></i> Voir PDF</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-file-pdf"></i> Cours Électrophorèse</h3>
-      <div class="card-links">
-        <a href="pdf/CoursMaster_%C3%A9lectrophor%C3%A8se.pdf" target="_blank" class="link-btn"><i class="fas fa-file-pdf"></i> Voir PDF</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-file-pdf"></i> TD Techniques de Labo (Prof)</h3>
-      <div class="card-links">
-        <a href="pdf/TD_Tech_labo%20prof.pdf" target="_blank" class="link-btn teacher"><i class="fas fa-file-pdf"></i> Voir PDF</a>
-      </div>
-    </div>
+    <div class="card"><h3><i class="fas fa-file-pdf"></i> Cours Centrifugation</h3><div class="card-links"><a href="pdf/CoursMaster_Centrifugation.pdf" target="_blank" class="link-btn"><i class="fas fa-file-pdf"></i> Voir PDF</a></div></div>
+    <div class="card"><h3><i class="fas fa-file-pdf"></i> Cours Spectroscopie</h3><div class="card-links"><a href="pdf/CoursMaster_Spectro.pdf" target="_blank" class="link-btn"><i class="fas fa-file-pdf"></i> Voir PDF</a></div></div>
+    <div class="card"><h3><i class="fas fa-file-pdf"></i> Cours Électrophorèse</h3><div class="card-links"><a href="pdf/CoursMaster_%C3%A9lectrophor%C3%A8se.pdf" target="_blank" class="link-btn"><i class="fas fa-file-pdf"></i> Voir PDF</a></div></div>
+    <div class="card"><h3><i class="fas fa-file-pdf"></i> TD Techniques de Labo (Prof)</h3><div class="card-links"><a href="pdf/TD_Tech_labo%20prof.pdf" target="_blank" class="link-btn teacher"><i class="fas fa-file-pdf"></i> Voir PDF</a></div></div>
   </div>
-
-  <footer>
-    <p>© 2025 Laboratoire de Biotechnologies des Rhizobium et Amélioration des Plantes</p>
-    <p>Université d'Oran 1 Ahmed Ben Bella, Algérie</p>
-  </footer>
 </div>
 </body>
 </html>
