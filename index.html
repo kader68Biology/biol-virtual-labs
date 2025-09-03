@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biol Virtual Labs</title>
   <style>
-    /* 🌟 Style global moderne */
     body {
       font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
@@ -23,18 +22,25 @@
     }
 
     header h1 {
-      margin: 0;
+      margin: 15px 0 10px;
       font-size: 2.5em;
     }
 
     header p {
-      margin-top: 10px;
+      margin-top: 5px;
       font-size: 1.2em;
       opacity: 0.9;
     }
 
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+      display: block;
+    }
+
     main {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 0 20px;
       display: grid;
@@ -42,8 +48,7 @@
       gap: 30px;
     }
 
-    /* 📚 Style des cartes de notebooks */
-    .notebook-card {
+    .card {
       background: white;
       border-radius: 20px;
       padding: 25px;
@@ -51,18 +56,17 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .notebook-card:hover {
+    .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 22px rgba(0,0,0,0.15);
     }
 
-    .notebook-card h2 {
+    .card h2 {
       margin-top: 0;
-      font-size: 1.5em;
+      font-size: 1.4em;
       color: #34495e;
     }
 
-    /* 🎛 Style des boutons */
     .btn {
       display: inline-block;
       margin: 12px 8px 0;
@@ -105,30 +109,84 @@
 <body>
 
   <header>
-    <h1>🧪 Biol Virtual Labs</h1>
-    <p>Explorez les notebooks interactifs de biologie virtuelle</p>
+    <!-- 🧬 Logo SVG -->
+    <svg class="logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="20" cy="44" r="8"/>
+        <line x1="20" y1="36" x2="20" y2="28"/>
+        <line x1="16" y1="28" x2="24" y2="28"/>
+        <rect x="28" y="18" width="8" height="20" rx="2"/>
+        <line x1="32" y1="18" x2="32" y2="10"/>
+        <line x1="28" y1="10" x2="36" y2="10"/>
+        <path d="M44 16c-4 4-4 12 0 16s4 12 0 16"/>
+        <path d="M52 16c4 4 4 12 0 16s-4 12 0 16"/>
+        <line x1="44" y1="20" x2="52" y2="20"/>
+        <line x1="44" y1="28" x2="52" y2="28"/>
+        <line x1="44" y1="36" x2="52" y2="36"/>
+        <line x1="44" y1="44" x2="52" y2="44"/>
+      </g>
+    </svg>
+
+    <h1>Biol Virtual Labs</h1>
+    <p>Explorez les notebooks interactifs et documents PDF</p>
   </header>
 
   <main>
-    <!-- ✅ Notebook 1 -->
-    <div class="notebook-card">
-      <h2>Notebook 1 : Introduction</h2>
-      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/notebook1.ipynb">Ouvrir en local (JupyterLab)</a>
-      <a class="btn btn-download" href="notebooks/notebook1.ipynb" download>Télécharger</a>
+    <!-- ✅ Notebooks -->
+    <div class="card">
+      <h2>UV Visible Simulation</h2>
+      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/uv_visible_simulation.ipynb">Ouvrir en local (JupyterLab)</a>
+      <a class="btn btn-download" href="notebooks/uv_visible_simulation.ipynb" download>Télécharger</a>
     </div>
 
-    <!-- ✅ Notebook 2 -->
-    <div class="notebook-card">
-      <h2>Notebook 2 : Simulation</h2>
-      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/notebook2.ipynb">Ouvrir en local (JupyterLab)</a>
-      <a class="btn btn-download" href="notebooks/notebook2.ipynb" download>Télécharger</a>
+    <div class="card">
+      <h2>Centrifugation Simulation</h2>
+      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/centrifugation_simulation.ipynb">Ouvrir en local (JupyterLab)</a>
+      <a class="btn btn-download" href="notebooks/centrifugation_simulation.ipynb" download>Télécharger</a>
     </div>
 
-    <!-- ✅ Notebook 3 -->
-    <div class="notebook-card">
-      <h2>Notebook 3 : Analyse</h2>
-      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/notebook3.ipynb">Ouvrir en local (JupyterLab)</a>
-      <a class="btn btn-download" href="notebooks/notebook3.ipynb" download>Télécharger</a>
+    <div class="card">
+      <h2>Electrophoresis Simulation</h2>
+      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/electrophoresis_simulation.ipynb">Ouvrir en local (JupyterLab)</a>
+      <a class="btn btn-download" href="notebooks/electrophoresis_simulation.ipynb" download>Télécharger</a>
+    </div>
+
+    <div class="card">
+      <h2>Teacher Solutions</h2>
+      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/teacher_solutions.ipynb">Ouvrir en local (JupyterLab)</a>
+      <a class="btn btn-download" href="notebooks/teacher_solutions.ipynb" download>Télécharger</a>
+    </div>
+
+    <!-- ⚠️ Checkpoint file pas nécessaire pour étudiants, mais si tu veux garder : -->
+    <div class="card">
+      <h2>UV Visible Simulation (Checkpoint)</h2>
+      <a class="btn btn-download" href="notebooks/uv_visible_simulation-checkpoint.ipynb" download>Télécharger</a>
+    </div>
+
+    <!-- ✅ PDFs -->
+    <div class="card">
+      <h2>TD Techniques de Labo (Étudiants)</h2>
+      <a class="btn btn-download" href="pdf/TD_Tech_labo%20Student.pdf" download>Télécharger le PDF</a>
+    </div>
+
+    <div class="card">
+      <h2>TD Techniques de Labo (Prof)</h2>
+      <a class="btn btn-download" href="pdf/TD_Tech_labo%20prof.pdf" download>Télécharger le PDF</a>
+    </div>
+
+    <div class="card">
+      <h2>Cours Master - Centrifugation</h2>
+      <a class="btn btn-download" href="pdf/CoursMaster_Centrifugation.pdf" download>Télécharger le PDF</a>
+    </div>
+
+    <div class="card">
+      <h2>Cours Master - Électrophorèse</h2>
+      <a class="btn btn-download" href="pdf/CoursMaster_%C3%A9lectrophor%C3%A8se.pdf" download>Télécharger le PDF</a>
+    </div>
+
+    <div class="card">
+      <h2>Cours Master - Spectroscopie</h2>
+      <a class="btn btn-download" href="pdf/CoursMaster_Spectro.pdf" download>Télécharger le PDF</a>
     </div>
   </main>
 
