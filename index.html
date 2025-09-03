@@ -1,656 +1,140 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔬 Laboratoires Virtuels de Biologie</title>
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <img src="assets/banner.png" alt="Bannière du projet" width="50%"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        <h1>Laboratoires Virtuels de Biologie</h1>
-    <p>Pour exécuter ces laboratoires virtuels localement :</p>
-    <ol>
-        <li>Clonez ce dépôt : <code>git clone https://github.com/kader68Biology/biol-virtual-labs.git</code></li>
-        <li>Naviguez vers le dossier : <code>cd biol-virtual-labs</code></li>
-        <li>Installez les dépendances (voir README.md pour les détails).</li>
-        <li>Lancez JupyterLab : <code>jupyter lab</code></li>
-    </ol>
-     <p>Vous pourrez alors ouvrir et exécuter les notebooks directement dans votre navigateur.</p>
-    <!-- Supprimez ou commentez les anciens liens Binder -->
-    <!-- <a href="lien_binder">Lancer avec Binder</a> -->
-</body>
-</html>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #34495e;
-            --success: #27ae60;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            animation: fadeIn 1s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-bottom: 30px;
-            animation: slideInDown 1s ease-out;
-        }
-        
-        @keyframes slideInDown {
-            from {
-                transform: translate3d(0, -100%, 0);
-                visibility: visible;
-            }
-            to {
-                transform: translate3d(0, 0, 0);
-            }
-        }
-        
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 5px solid var(--secondary);
-            margin: 0 auto 20px;
-            object-fit: cover;
-            animation: pulse 2s infinite;
-        }
-        
-        h1 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 2.5em;
-            animation: slideInLeft 1s ease-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        @keyframes slideInLeft {
-            from {
-                transform: translate3d(-100%, 0, 0);
-                visibility: visible;
-            }
-            to {
-                transform: translate3d(0, 0, 0);
-            }
-        }
-        
-        .subtitle {
-            color: var(--dark);
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            animation: slideInRight 1s ease-out;
-        }
-        
-        @keyframes slideInRight {
-            from {
-                transform: translate3d(100%, 0, 0);
-                visibility: visible;
-            }
-            to {
-                transform: translate3d(0, 0, 0);
-            }
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-            animation: fadeIn 2s ease-in;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--dark);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .contact-item:hover {
-            color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
-        .badges-section {
-            text-align: center;
-            margin: 30px 0;
-            animation: zoomIn 1s ease-out;
-        }
-        
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale3d(0.3, 0.3, 0.3);
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-        
-        .badge {
-            display: inline-block;
-            margin: 10px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .badge img {
-            height: 30px;
-            transition: transform 0.3s;
-        }
-        
-        .badge:hover img {
-            transform: scale(1.2) rotate(5deg);
-        }
-        
-        .section-title {
-            color: Black;
-            text-align: center;
-            margin: 40px 0 20px;
-            font-size: 2em;
-            animation: bounceIn 1s ease-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        @keyframes bounceIn {
-            from, 20%, 40%, 60%, 80%, to {
-                animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-            }
-            0% {
-                opacity: 0;
-                transform: scale3d(0.3, 0.3, 0.3);
-            }
-            20% {
-                transform: scale3d(1.1, 1.1, 1.1);
-            }
-            40% {
-                transform: scale3d(0.9, 0.9, 0.9);
-            }
-            60% {
-                opacity: 1;
-                transform: scale3d(1.03, 1.03, 1.03);
-            }
-            80% {
-                transform: scale3d(0.97, 0.97, 0.97);
-            }
-            to {
-                opacity: 1;
-                transform: scale3d(1, 1, 1);
-            }
-        }
-        
-        /* Animation décorative miniature */
-        .decorative-animation {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid Black;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .decorative-animation.fast {
-            animation: spin 4s linear infinite;
-        }
-        
-        .decorative-animation.slow {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .decorative-animation img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s;
-            animation: fadeInUp 0.6s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translate3d(0, 100%, 0);
-            }
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
-        }
-        
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.5s;
-        }
-        
-        .card:hover::before {
-            left: 100%;
-        }
-        
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .card-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
-            background: var(--secondary);
-            color: Black;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .link-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
-        }
-        
-        .link-btn:hover::before {
-            left: 100%;
-        }
-        
-        .link-btn:hover {
-            background: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .link-btn.github {
-            background: #2c3e50;
-        }
-        
-        .link-btn.github:hover {
-            background: #1a252f;
-        }
-        
-        .link-btn.binder {
-            background: var(--success);
-        }
-        
-        .link-btn.binder:hover {
-            background: #219653;
-        }
-        
-        .access-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            margin: 40px 0;
-            animation: tada 2s infinite;
-        }
-        
-        @keyframes tada {
-            0% { transform: scale(1); }
-            10%, 20% { transform: scale(0.9) rotate(-3deg); }
-            30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
-            40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
-            100% { transform: scale(1) rotate(0); }
-        }
-        
-        .access-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        
-        .access-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: var(--accent);
-            color: Black;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: 600;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .access-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
-        }
-        
-        .access-btn:hover::before {
-            left: 100%;
-        }
-        
-        .access-btn:hover {
-            background: #c0392b;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        footer {
-            text-align: center;
-            color: Black;
-            padding: 30px;
-            margin-top: 30px;
-            animation: fadeIn 3s ease-in;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            .access-section {
-                animation: none;
-            }
-            
-            .decorative-animation {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .section-title, h1, footer {
-                gap: 10px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biol Virtual Labs</title>
+  <style>
+    /* 🌟 Style global moderne */
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f0f4f8, #e8eff5);
+      color: #2c3e50;
+    }
+
+    header {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    /* 📚 Style des cartes de notebooks */
+    .notebook-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .notebook-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+    }
+
+    .notebook-card h2 {
+      margin-top: 0;
+      font-size: 1.5em;
+      color: #34495e;
+    }
+
+    /* 🎛 Style des boutons */
+    .btn {
+      display: inline-block;
+      margin: 12px 8px 0;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95em;
+      transition: all 0.2s ease;
+    }
+
+    .btn-local {
+      background: #27ae60;
+      color: white;
+    }
+
+    .btn-local:hover {
+      background: #219150;
+    }
+
+    .btn-download {
+      background: #2980b9;
+      color: white;
+    }
+
+    .btn-download:hover {
+      background: #1f6691;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #555;
+      background: #ecf0f1;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="assets/profile.jpg" 
-                 alt="Abdelkader Allouche" 
-                 class="profile-img"
-                 onerror="this.src='https://ui-avatars.com/api/?name=Abdelkader+Allouche&size=120&background=3498db&color=fff'">
-            
-            <h1>
-                <div class="decorative-animation">
-                    <img src="assets/Animation/DNA2.gif" alt="ADN Animation">
-                </div>
-                🔬 Laboratoires Virtuels de Biologie
-                <div class="decorative-animation fast">
-                    <img src="assets/Animation/DNA2.gif" alt="ADN Animation">
-                </div>
-            </h1>
-            <p class="subtitle">Techniques de Centrifugation, Spectrophotométrie & Électrophorèse</p>
-            
-            <div class="contact-info">
-                <a href="mailto:kader.allouche@gmail.com" class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    kader.allouche@gmail.com
-                </a>
-                <a href="https://github.com/kader68Biology" target="_blank" class="contact-item">
-                    <i class="fab fa-github"></i>
-                    kader68Biology
-                </a>
-            </div>
-            
-            <div class="badges-section">
-                <a href="https://github.com/kader68Biology/biol-virtual-labs" target="_blank" class="badge">
-                    <img src="https://img.shields.io/github/stars/kader68Biology/biol-virtual-labs?style=social" alt="GitHub Stars">
-                </a>
-                <a href="https://github.com/kader68Biology/biol-virtual-labs/issues" target="_blank" class="badge">
-                    <img src="https://img.shields.io/github/issues/kader68Biology/biol-virtual-labs?style=flat-square&color=red" alt="Issues">
-                </a>
-                <a href="https://github.com/kader68Biology/biol-virtual-labs/commits" target="_blank" class="badge">
-                    <img src="https://img.shields.io/github/last-commit/kader68Biology/biol-virtual-labs?style=flat-square&color=blue" alt="Last Commit">
-                </a>
-            </div>
-        </header>
 
-        <!-- Badges Binder -->
-        <div class="badges-section">
-            <h2 class="section-title">
-                <div class="decorative-animation slow">
-                    <img src="assets/Animation/DNA1.gif" alt="ADN Animation">
-                </div>
-                <i class="fas fa-rocket"></i> Exécution Interactive
-            </h2>
-            <a href="https://mybinder.org/v2/gh/kader68Biology/biol-virtual-labs/HEAD" target="_blank" class="badge">
-                <img src="https://mybinder.org/badge_logo.svg" alt="Binder">
-            </a>
-        </div>
+  <header>
+    <h1>🧪 Biol Virtual Labs</h1>
+    <p>Explorez les notebooks interactifs de biologie virtuelle</p>
+  </header>
 
-                        <!-- Laboratoires -->
-        <h2 class="section-title">
-            <div class="decorative-animation">
-                <img src="assets/Animation/DNA2.gif" alt="ADN Animation">
-            </div>
-            <i class="fas fa-flask"></i> Laboratoires Virtuels
-            <div class="decorative-animation fast">
-                <img src="assets/Animation/DNA2.gif" alt="ADN Animation">
-            </div>
-        </h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-circle-notch"></i> Centrifugation</h3>
-                <div class="card-links">
-                    <!-- Lien pour télécharger le notebook -->
-                    <a href="notebooks/centrifugation_simulation.ipynb" target="_blank" class="link-btn github">
-                        <i class="fab fa-github"></i> Télécharger le Notebook (.ipynb)
-                    </a>
-                    <!-- Lien pour tenter l'ouverture locale dans JupyterLab -->
-                    <a href="notebooks/centrifugation_simulation.ipynb" target="_blank" class="link-btn binder" title="Assurez-vous que JupyterLab est installé et configuré pour ouvrir les fichiers .ipynb">
-                        <i class="fas fa-play"></i> Ouvrir dans JupyterLab (Local)
-                    </a>
-                    <a href="pdf/CoursMaster_Centrifugation.pdf" target="_blank" class="link-btn">
-                        <i class="fas fa-file-pdf"></i> Cours PDF
-                    </a>
-                </div>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-chart-line"></i> Spectrophotométrie</h3>
-                <div class="card-links">
-                    <!-- Lien pour télécharger le notebook -->
-                    <a href="notebooks/uv_visible_simulation.ipynb" target="_blank" class="link-btn github">
-                        <i class="fab fa-github"></i> Télécharger le Notebook (.ipynb)
-                    </a>
-                    <!-- Lien pour tenter l'ouverture locale dans JupyterLab -->
-                    <a href="notebooks/uv_visible_simulation.ipynb" target="_blank" class="link-btn binder" title="Assurez-vous que JupyterLab est installé et configuré pour ouvrir les fichiers .ipynb">
-                        <i class="fas fa-play"></i> Ouvrir dans JupyterLab (Local)
-                    </a>
-                    <a href="pdf/CoursMaster_Spectro.pdf" target="_blank" class="link-btn">
-                        <i class="fas fa-file-pdf"></i> Cours PDF
-                    </a>
-                </div>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-bolt"></i> Électrophorèse</h3>
-                <div class="card-links">
-                    <!-- Lien pour télécharger le notebook -->
-                    <a href="notebooks/electrophoresis_simulation.ipynb" target="_blank" class="link-btn github">
-                        <i class="fab fa-github"></i> Télécharger le Notebook (.ipynb)
-                    </a>
-                    <!-- Lien pour tenter l'ouverture locale dans JupyterLab -->
-                    <a href="notebooks/electrophoresis_simulation.ipynb" target="_blank" class="link-btn binder" title="Assurez-vous que JupyterLab est installé et configuré pour ouvrir les fichiers .ipynb">
-                        <i class="fas fa-play"></i> Ouvrir dans JupyterLab (Local)
-                    </a>
-                    <a href="pdf/CoursMaster_électrophorèse.pdf" target="_blank" class="link-btn">
-                        <i class="fas fa-file-pdf"></i> Cours PDF
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Travaux Dirigés -->
-        <h2 class="section-title">
-            <div class="decorative-animation slow">
-                <img src="assets/Animation/DNA3.gif" alt="ADN Animation">
-            </div>
-            <i class="fas fa-graduation-cap"></i> Travaux Dirigés
-            <div class="decorative-animation">
-                <img src="assets/Animation/DNA3.gif" alt="ADN Animation">
-            </div>
-        </h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-book"></i> TD Techniques de Laboratoire</h3>
-                <div class="card-links">
-                    <a href="pdf/TD_Tech_labo Student.pdf" target="_blank" class="link-btn">
-                        <i class="fas fa-user-graduate"></i> Énoncé Étudiants
-                    </a>
-                    <a href="login.html" class="link-btn" style="background: var(--accent);">
-                        <i class="fas fa-lock"></i> Corrigé Enseignants
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Accès Restreints -->
-        <div class="access-section">
-            <h2><i class="fas fa-user-shield"></i> Accès Restreints</h2>
-            <p>Zone sécurisée pour les enseignants et étudiants autorisés</p>
-            <div class="access-buttons">
-                <a href="login.html" class="access-btn">
-                    <i class="fas fa-user-graduate"></i> Accès Étudiants
-                </a>
-                <a href="teacher-login.html" class="access-btn">
-                    <i class="fas fa-chalkboard-teacher"></i> Accès Enseignants
-                </a>
-            </div>
-        </div>
-
-        <footer>
-            <div class="decorative-animation fast">
-                <img src="assets/Animation/DNA1.gif" alt="ADN Animation">
-            </div>
-            <div>
-                <p>© 2025 Laboratoire de Biotechnologies des Rhizobium et Amélioration des Plantes</p>
-                <p>Université d'Oran 1 Ahmed Ben Bella, Algérie</p>
-            </div>
-            <div class="decorative-animation">
-                <img src="assets/Animation/DNA1.gif" alt="ADN Animation">
-            </div>
-        </footer>
+  <main>
+    <!-- ✅ Notebook 1 -->
+    <div class="notebook-card">
+      <h2>Notebook 1 : Introduction</h2>
+      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/notebook1.ipynb">Ouvrir en local (JupyterLab)</a>
+      <a class="btn btn-download" href="notebooks/notebook1.ipynb" download>Télécharger</a>
     </div>
+
+    <!-- ✅ Notebook 2 -->
+    <div class="notebook-card">
+      <h2>Notebook 2 : Simulation</h2>
+      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/notebook2.ipynb">Ouvrir en local (JupyterLab)</a>
+      <a class="btn btn-download" href="notebooks/notebook2.ipynb" download>Télécharger</a>
+    </div>
+
+    <!-- ✅ Notebook 3 -->
+    <div class="notebook-card">
+      <h2>Notebook 3 : Analyse</h2>
+      <a class="btn btn-local" href="http://localhost:8888/lab/tree/notebooks/notebook3.ipynb">Ouvrir en local (JupyterLab)</a>
+      <a class="btn btn-download" href="notebooks/notebook3.ipynb" download>Télécharger</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Biol Virtual Labs – Développé avec ❤️ pour l’apprentissage interactif
+  </footer>
+
 </body>
 </html>
